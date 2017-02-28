@@ -17,11 +17,8 @@ RUN mkdir /block-data
 
 # Pass in the genesis block. 
 COPY GenesisBlock.json GenesisBlock.json
+COPY blockchain.sh blockchain.sh
 
 RUN ln -sf /go-ethereum/build/bin/geth /bin/geth
 
-RUN geth --datadir /block-data init /GenesisBlock.json 
-
-EXPOSE 8546
-
-ENTRYPOINT geth --identity "MYPRIVATECHAIN" --rpc rpcaddr 0.0.0.0 --rpcport "8546" --rpccorsdomain "*" --datadir "/block-data" --port "30303" --nodiscover --ipcapi "admin,db,eth,debug,miner,net,shh,txpool,personal,web3" --rpcapi "db,eth,net,web3,personal" --autodag --networkid 123456789 --nat "any" console 
+ENTRYPOINT /bin/bash
