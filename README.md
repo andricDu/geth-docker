@@ -11,5 +11,5 @@ $ docker pull dandric/geth-docker
 
 To run:
 ```bash
-$ docker run -it dandric/geth-docker
+$ docker run -it -p 8546:8546 dandric/geth-docker
 ```
